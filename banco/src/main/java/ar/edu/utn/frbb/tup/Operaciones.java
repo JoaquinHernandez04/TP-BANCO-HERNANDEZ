@@ -17,7 +17,7 @@ class Operaciones {
     }
  // ======================= EMPIEZA CLIENTE ======================= 
     public void crearCliente() {
-        // Crear cliente (Aun no tiene cuenta a su nombre , solo se registra)
+        // Crear cliente (Aun no tiene cuenta a su nombre, solo se registra)
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese el nombre del cliente:");
         String nombre = scanner.nextLine();
@@ -79,15 +79,14 @@ class Operaciones {
             }
         }
         if (cliente != null) {
-            // Cliente encontrado, proceder a crear la cuenta bancaria
+
             System.out.println("Ingrese el tipo de cuenta (Corriente/Ahorros):");
             String tipoCuenta = scanner.nextLine();
             System.out.println("Ingrese el saldo inicial:");
             double saldoInicial = scanner.nextDouble();
-            scanner.nextLine(); // Limpiar el buffer del scanner
+            scanner.nextLine();
 
-            // Crear la cuenta bancaria y asociarla al cliente
-            int numeroCuenta = cuentas.size() + 1 ; // Generar número de cuenta único
+            int numeroCuenta = cuentas.size() + 1;
             CuentaBancaria nuevaCuenta = new CuentaBancaria(numeroCuenta, cliente, tipoCuenta, saldoInicial);
             cuentas.add(nuevaCuenta);
 
@@ -106,24 +105,24 @@ class Operaciones {
     public void realizarDeposito() {
         Scanner scanner = new Scanner(System.in);
     
-        // Solicitar el número de cuenta para realizar el deposito
+
         System.out.println("Ingrese el número de cuenta para realizar el depósito:");
         int numeroCuenta = scanner.nextInt();
         scanner.nextLine(); 
     
-        // Buscar la cuenta bancaria con el numero de cuenta proporcionado
+
         CuentaBancaria cuenta = buscarCuenta(numeroCuenta);
     
         if (cuenta != null) {
-            // Cuenta encontrada, proceder con el depósito
+
             System.out.println("Ingrese el monto a depositar:");
             double monto = scanner.nextDouble();
-            scanner.nextLine(); // Limpiar el buffer del scanner
+            scanner.nextLine();
     
-            // Actualizar el saldo de la cuenta
+            // Actualizar el saldo
             cuenta.depositar(monto);
     
-            // Registrar el movimiento de depósito
+
             registrarMovimiento(cuenta, "DEPOSITO", monto);
     
             System.out.println("Deposito realizado correctamente en la cuenta " + cuenta.getNumeroCuenta());
@@ -135,24 +134,22 @@ class Operaciones {
 
     public void realizarRetiro() {
         Scanner scanner = new Scanner(System.in);
-    
-        // Solicitar el número de cuenta para realizar el retiro
+
         System.out.println("Ingrese el numero de cuenta para realizar el retiro:");
         int numeroCuenta = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer del scanner
-    
-        // Buscar la cuenta bancaria con el número de cuenta proporcionado
+        scanner.nextLine();
+
         CuentaBancaria cuenta = buscarCuenta(numeroCuenta);
     
         if (cuenta != null) {
-            // Cuenta encontrada, proceder con el retiro
+
             System.out.println("Ingrese el monto a retirar:");
             double monto = scanner.nextDouble();
-            scanner.nextLine(); // Limpiar el buffer del scanner
+            scanner.nextLine();
     
-            // Verificar si el saldo es suficiente para el retiro
+            // Verificar si el saldo es suficiente
             if (cuenta.getSaldo() >= monto) {
-                // Realizar el retiro
+
                 cuenta.retirar(monto);
     
                 // Registrar el movimiento de retiro
@@ -175,7 +172,7 @@ class Operaciones {
         // Solicitar el número de cuenta de origen
         System.out.println("Ingrese el numero de cuenta de origen:");
         int numeroCuentaOrigen = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer del scanner
+        scanner.nextLine();
     
         // Buscar la cuenta bancaria de origen
         CuentaBancaria cuentaOrigen = buscarCuenta(numeroCuentaOrigen);
@@ -184,26 +181,25 @@ class Operaciones {
             // Solicitar el número de cuenta de destino
             System.out.println("Ingrese el número de cuenta de destino:");
             int numeroCuentaDestino = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer del scanner
+            scanner.nextLine();
     
             // Buscar la cuenta bancaria de destino
             CuentaBancaria cuentaDestino = buscarCuenta(numeroCuentaDestino);
     
             if (cuentaDestino != null) {
-                // Cuentas encontradas, proceder con la transferencia
+
                 System.out.println("Ingrese el monto a transferir:");
                 double monto = scanner.nextDouble();
-                scanner.nextLine(); // Limpiar el buffer del scanner
-    
-                // Verificar si la cuenta de origen tiene saldo suficiente
+                scanner.nextLine();
+
                 if (cuentaOrigen.getSaldo() >= monto) {
-                    // Realizar la transferencia
+
                     cuentaOrigen.retirar(monto);
                     cuentaDestino.depositar(monto);
     
-                    // Registrar el movimiento de transferencia en ambas cuentas
+
                     registrarMovimiento(cuentaOrigen, "TRANSFERENCIA ENVIADA", -monto); // Monto negativo en transferencia enviada
-                    registrarMovimiento(cuentaDestino, "TRANSFERENCIA RECIBIDA", monto); // Monto positivo en transferencia recibida
+                    registrarMovimiento(cuentaDestino, "TRANSFERENCIA RECIBIDA", monto);
     
                     System.out.println("Transferencia realizada correctamente desde cuenta "
                                        + cuentaOrigen.getNumeroCuenta() + " a cuenta " + cuentaDestino.getNumeroCuenta());

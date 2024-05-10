@@ -6,14 +6,14 @@ public class MovimientoCuenta {
     private String tipoOperacion;
     private double monto;
 
-    // Constructor
+
     public MovimientoCuenta(int idCuentaBancaria, String tipoOperacion, double monto) {
         this.idCuentaBancaria = idCuentaBancaria;
         this.tipoOperacion = tipoOperacion;
         this.monto = monto;
     }
 
-    // Getters
+
     public int getIdCuentaBancaria() {
         return idCuentaBancaria;
     }

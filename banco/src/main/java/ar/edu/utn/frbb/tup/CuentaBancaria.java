@@ -17,7 +17,7 @@ public class CuentaBancaria {
         
     }
 
-    // Métodos para operaciones en la cuenta
+
     public void depositar(double monto) {
         this.saldo += monto;
     }
@@ -43,7 +43,7 @@ public class CuentaBancaria {
         }
     }
 
-    // Getters
+
     public int getNumeroCuenta() {
         return numeroCuenta;
     }
