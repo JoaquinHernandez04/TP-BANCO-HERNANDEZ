@@ -26,6 +26,14 @@ class Operaciones {
         String direccion = scanner.nextLine();
         System.out.println("Ingrese el DNI del cliente:");
         int DNI = scanner.nextInt();
+        for (Cliente c : clientes) {
+            if (c.getDni() == DNI) {
+                System.out.println("El DNI ingresado ya existe. Por favor, ingrese otro.");
+                DNI = scanner.nextInt();
+                break;
+            }
+        }
+
         Cliente cliente = new Cliente(DNI, nombre, apellido, direccion);
         clientes.add(cliente);
         System.out.println("Cliente creado con éxito.");
