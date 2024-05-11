@@ -2,7 +2,6 @@ package ar.edu.utn.frbb.tup;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 // Clase Operaciones
 class Operaciones {
     private List<Cliente> clientes;
@@ -33,30 +32,33 @@ class Operaciones {
     }
 
 
-    /*public void modificarCliente() {
+    public void modificarCliente() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el ID del cliente que desea modificar:");
-        int idCliente = scanner.nextInt();
-        Cliente cliente = buscarCliente(idCliente);
-        if (cliente == null) {  
-            System.out.println("Cliente no encontrado.");
-            return;
-        }
-        System.out.println("Ingrese el nuevo nombre del cliente:");
-        String nombre = scanner.nextLine();
-        System.out.println("Ingrese el nuevo apellido del cliente:");
-        String apellido = scanner.nextLine();
-        System.out.println("Ingrese la nueva dirección del cliente:");
-        String direccion = scanner.nextLine();
-        System.out.println("Ingrese el nuevo DNI del cliente:");
-        int DNI = scanner.nextInt();
 
-        cliente.setNombre(nombre);
-        cliente.setApellido(apellido);
-        cliente.setDireccion(direccion);
-        cliente.setDni(DNI);
-        System.out.println("Cliente modificado con éxito.");
-    }*/
+        System.out.println("Ingrese el DNI del cliente que desea modificar:");
+        int dniCliente = scanner.nextInt();
+        scanner.nextLine();
+        Cliente cliente = null;
+        for (Cliente c : clientes) {
+            if (c.getDni() == dniCliente) {
+                cliente = c;
+                break;
+            }
+        }
+        if (cliente != null) {
+            System.out.println("Ingrese el nuevo nombre del cliente:");
+            String nombre = scanner.nextLine();
+            System.out.println("Ingrese el nuevo apellido del cliente:");
+            String apellido = scanner.nextLine();
+            System.out.println("Ingrese la nueva dirección del cliente:");
+            String direccion = scanner.nextLine();
+
+            cliente.setNombre(nombre);
+            cliente.setApellido(apellido);
+            cliente.setDireccion(direccion);
+            System.out.println("Cliente modificado con éxito.");
+        }
+    }
 
 
      // ======================= CIERRA CLIENTE ======================= 

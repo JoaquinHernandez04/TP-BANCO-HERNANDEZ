@@ -61,7 +61,7 @@ class BancoMenu {
                     operaciones.crearCliente();
                     break;
                 case 2:
-                    //operaciones.modificarCliente(); FALTA TERMINAR ESTA OPCION DE CLIENTES 
+                    operaciones.modificarCliente();
                     break;
                 case 0:
                     break;
