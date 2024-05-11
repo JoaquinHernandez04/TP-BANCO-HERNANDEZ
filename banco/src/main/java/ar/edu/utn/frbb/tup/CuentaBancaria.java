@@ -1,6 +1,6 @@
 package ar.edu.utn.frbb.tup;
 
-import java.time.LocalDate;
+
 
 public class CuentaBancaria {
     private int numeroCuenta;
